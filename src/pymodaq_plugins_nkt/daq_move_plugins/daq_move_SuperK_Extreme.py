@@ -7,6 +7,8 @@ from pymodaq.utils.parameter import Parameter
 
 from pymodaq_plugins_nkt.hardware.wrapper import Extreme
 
+import pylablib as pll
+
 
 # class PythonWrapperOfYourInstrument:
 #     #  TODO Replace this fake class with the import of the real python wrapper of your instrument
@@ -42,29 +44,30 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
 
     """
     is_multiaxes = False  # TODO for your plugin set to True if this plugin is controlled for a multiaxis controller
-    _axis_names: Union[List[str], Dict[str, int]] = ['Axis1']  # TODO for your plugin: complete the list
-    _controller_units: Union[str, List[str]] = ''  # TODO for your plugin: put the correct unit here, it could be
+    _axis_names: Union[List[str], Dict[str, int]] = ['1']  # TODO for your plugin: complete the list
+    _controller_units: Union[str, List[str]] = '%'  # TODO for your plugin: put the correct unit here, it could be
     # TODO  a single str (the same one is applied to all axes) or a list of str (as much as the number of axes)
     _epsilon: Union[float, List[float]] = 0  # TODO replace this by a value that is correct depending on your controller
     # TODO it could be a single float of a list of float (as much as the number of axes)
     data_actuator_type = DataActuatorType.DataActuator  # whether you use the new data style for actuator otherwise set this
     # as  DataActuatorType.float  (or entirely remove the line)
 
+    _laser_port = None
+
+    ports = pll.list_backend_resources("serial")
+
     params = [   # TODO for your custom plugin: elements to be added here as dicts in order to control your custom stage
-             {'title': 'Linear Slide with suffix', 'name': 'linearslidewithsuffixandsiPrefix', 'type': 'slide', 'value': 50, 'default': 50,
-             'min': 0,
-             'max': 1e6, 'subtype': 'linear','suffix':'V','siPrefix':True}
-             ] + comon_parameters_fun(is_multiaxes, axis_names=_axis_names, epsilon=_epsilon)
-    # _epsilon is the initial default value for the epsilon parameter allowing pymodaq to know if the controller reached
-    # the target value. It is the developer responsibility to put here a meaningful value
+        {'title': 'COM Port:', 'name': 'com_port', 'type': 'list', 'limits': ports},
+        {'title': 'Power', 'name': 'power', 'type': 'slide', 'value': 17, 'default': 17, 'min': 17, 
+         'max': 100, 'subtype': 'linear','suffix':'%','siPrefix':True}
+    ]
 
     def ini_attributes(self):
         #  TODO declare the type of the wrapper (and assign it to self.controller) you're going to use for easy
         #  autocompletion
-        self.controller: PythonWrapperOfYourInstrument = None
+        self.controller: Extreme = None
 
         #TODO declare here attributes you want/need to init with a default value
-        pass
 
     def get_actuator_value(self):
         """Get the current value from the hardware with scaling conversion.
@@ -79,25 +82,23 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         pos = self.get_position_with_scaling(pos)
         return pos
 
-    def user_condition_to_reach_target(self) -> bool:
-        """ Implement a condition for exiting the polling mechanism and specifying that the
-        target value has been reached
+    # def user_condition_to_reach_target(self) -> bool:
+    #     """ Implement a condition for exiting the polling mechanism and specifying that the
+    #     target value has been reached
 
-       Returns
-        -------
-        bool: if True, PyMoDAQ considers the target value has been reached
-        """
-        # TODO either delete this method if the usual polling is fine with you, but if need you can
-        #  add here some other condition to be fullfilled either a completely new one or
-        #  using or/and operations between the epsilon_bool and some other custom booleans
-        #  for a usage example see DAQ_Move_brushlessMotor from the Thorlabs plugin
-        return True
+    #    Returns
+    #     -------
+    #     bool: if True, PyMoDAQ considers the target value has been reached
+    #     """
+    #     # TODO either delete this method if the usual polling is fine with you, but if need you can
+    #     #  add here some other condition to be fullfilled either a completely new one or
+    #     #  using or/and operations between the epsilon_bool and some other custom booleans
+    #     #  for a usage example see DAQ_Move_brushlessMotor from the Thorlabs plugin
+    #     return True
 
     def close(self):
         """Terminate the communication protocol"""
-        ## TODO for your custom plugin
-        raise NotImplemented  # when writing your own plugin remove this line
-        #  self.controller.your_method_to_terminate_the_communication()  # when writing your own plugin replace this line
+        self.controller.close_connection()  # when writing your own plugin replace this line
 
     def commit_settings(self, param: Parameter):
         """Apply the consequences of a change of value in the detector settings
@@ -108,14 +109,16 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
             A given parameter (within detector_settings) whose value has been changed by the user
         """
         ## TODO for your custom plugin
-        if param.name() == 'axis':
-            self.axis_unit = self.controller.your_method_to_get_correct_axis_unit()
+        if param.name() == "com_port":
+            self.controller.close_connection()
+            self.controller.open_connection(port=self.settings['com_port'])
+
+        elif param.name() == 'power':
+            self.set_power(value=int(self.settings['power']))
             # do this only if you can and if the units are not known beforehand, for instance
             # if the motors connected to the controller are of different type (mm, µm, nm, , etc...)
             # see BrushlessDCMotor from the thorlabs plugin for an exemple
-
-        elif param.name() == "a_parameter_you've_added_in_self.params":
-           self.controller.your_method_to_apply_this_param_change()
+        
         else:
             pass
 
