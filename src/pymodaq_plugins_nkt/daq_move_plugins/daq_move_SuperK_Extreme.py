@@ -116,9 +116,7 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         # self.ini_stage_init(slave_controller=controller)  # will be useful when controller is slave
 
         if self.is_master:  # is needed when controller is master
-            self.controller = PythonWrapperOfYourInstrument(arg1, arg2, ...) #  arguments for instantiation!)
-            # todo: enter here whatever is needed for your controller initialization and eventual
-            #  opening of the communication channel
+            self.controller = Extreme(port=self.settings['com_port'])
 
         info = "Whatever info you want to log"
         initialized = self.controller.a_method_or_atttribute_to_check_if_init()  # todo
