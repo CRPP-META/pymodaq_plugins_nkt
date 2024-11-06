@@ -119,7 +119,7 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
             self.controller = Extreme(port=self.settings['com_port'])
 
         info = "Whatever info you want to log"
-        initialized = self.controller.a_method_or_atttribute_to_check_if_init()  # todo
+        initialized = bool(self.controller.system_type())
         return info, initialized
 
     def move_abs(self, value: DataActuator):
