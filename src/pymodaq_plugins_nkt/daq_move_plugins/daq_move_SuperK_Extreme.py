@@ -10,38 +10,21 @@ from pymodaq_plugins_nkt.hardware.superk_extreme import Extreme
 import pylablib as pll
 
 
-# class PythonWrapperOfYourInstrument:
-#     #  TODO Replace this fake class with the import of the real python wrapper of your instrument
-#     pass
-
-# TODO:
-# (1) change the name of the following class to DAQ_Move_TheNameOfYourChoice
-# (2) change the name of this file to daq_move_TheNameOfYourChoice ("TheNameOfYourChoice" should be the SAME
-#     for the class name and the file name.)
-# (3) this file should then be put into the right folder, namely IN THE FOLDER OF THE PLUGIN YOU ARE DEVELOPING:
-#     pymodaq_plugins_my_plugin/daq_move_plugins
-
 class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
-    """ Instrument plugin class for an actuator.
+    """ Instrument plugin class for NKT Photonics lasers, tested on SuperK Extreme EXB-6 model.
     
     This object inherits all functionalities to communicate with PyMoDAQ's DAQ_Move module through inheritance via
     DAQ_Move_base. It makes a bridge between the DAQ_Move module and the Python wrapper of a particular instrument.
 
-    TODO Complete the docstring of your plugin with:
-        * The set of controllers and actuators that should be compatible with this instrument plugin.
-        * With which instrument and controller it has been tested.
-        * The version of PyMoDAQ during the test.
-        * The version of the operating system.
-        * Installation instructions: what manufacturer's drivers should be installed to make it run?
+    Should be compatible with all NKT Photonics SuperK Extreme lasers. Tested on SuperK Extreme EXB-6 model
+    with PyMoDAQ 4.4.6 on Windows 11 and Python 3.11.10. Installing "CONTROL" software from NKT website
+    should provide all necessary drivers → https://www.nktphotonics.com/support/
 
     Attributes:
     -----------
     controller: object
         The particular object that allow the communication with the hardware, in general a python wrapper around the
          hardware library.
-         
-    # TODO add your particular attributes here if any
-
     """
     is_multiaxes = False  # TODO for your plugin set to True if this plugin is controlled for a multiaxis controller
     _axis_names: Union[List[str], Dict[str, int]] = ['1']  # TODO for your plugin: complete the list
@@ -63,11 +46,8 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
     ]
 
     def ini_attributes(self):
-        #  TODO declare the type of the wrapper (and assign it to self.controller) you're going to use for easy
-        #  autocompletion
-        self.controller: Extreme = None
 
-        #TODO declare here attributes you want/need to init with a default value
+        self.controller: Extreme = None
 
     def get_actuator_value(self):
         """Get the current value from the hardware with scaling conversion.
@@ -136,8 +116,8 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         initialized: bool
             False if initialization failed otherwise True
         """
-        raise NotImplemented  # TODO when writing your own plugin remove this line and modify the ones below
-        self.ini_stage_init(slave_controller=controller)  # will be useful when controller is slave
+
+        # self.ini_stage_init(slave_controller=controller)  # will be useful when controller is slave
 
         if self.is_master:  # is needed when controller is master
             self.controller = PythonWrapperOfYourInstrument(arg1, arg2, ...) #  arguments for instantiation!)
