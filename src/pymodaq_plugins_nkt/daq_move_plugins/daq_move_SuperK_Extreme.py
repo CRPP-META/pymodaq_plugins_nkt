@@ -26,14 +26,12 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         The particular object that allow the communication with the hardware, in general a python wrapper around the
          hardware library.
     """
-    is_multiaxes = False  # TODO for your plugin set to True if this plugin is controlled for a multiaxis controller
-    _axis_names: Union[List[str], Dict[str, int]] = ['1']  # TODO for your plugin: complete the list
-    _controller_units: Union[str, List[str]] = '%'  # TODO for your plugin: put the correct unit here, it could be
-    # TODO  a single str (the same one is applied to all axes) or a list of str (as much as the number of axes)
-    _epsilon: Union[float, List[float]] = 0  # TODO replace this by a value that is correct depending on your controller
-    # TODO it could be a single float of a list of float (as much as the number of axes)
-    data_actuator_type = DataActuatorType.DataActuator  # whether you use the new data style for actuator otherwise set this
-    # as  DataActuatorType.float  (or entirely remove the line)
+
+    is_multiaxes = False
+    _axis_names: Union[List[str], Dict[str, int]] = ['Power']   # name of the axis
+    _controller_units: Union[str, List[str]] = '%'              # units of the axis
+    _epsilon: Union[float, List[float]] = 0                     # laser has no moving parts → epsilon = 0
+    data_actuator_type = DataActuatorType.DataActuator  # can be DataActuatorType.float for old data style
 
     _laser_port = None
 
