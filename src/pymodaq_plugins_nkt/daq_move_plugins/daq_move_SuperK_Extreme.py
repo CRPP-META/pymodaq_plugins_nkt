@@ -5,7 +5,7 @@ from pymodaq.control_modules.move_utility_classes import DAQ_Move_base, comon_pa
 from pymodaq.utils.daq_utils import ThreadCommand # object used to send info back to the main thread
 from pymodaq.utils.parameter import Parameter
 
-from pymodaq_plugins_nkt.hardware.wrapper import Extreme
+from pymodaq_plugins_nkt.hardware.superk_extreme import Extreme
 
 import pylablib as pll
 
