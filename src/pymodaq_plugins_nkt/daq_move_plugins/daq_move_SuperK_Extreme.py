@@ -96,9 +96,7 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
             # do this only if you can and if the units are not known beforehand, for instance
             # if the motors connected to the controller are of different type (mm, µm, nm, , etc...)
             # see BrushlessDCMotor from the thorlabs plugin for an exemple
-        
-        else:
-            pass
+
 
     def ini_stage(self, controller=None):
         """Actuator communication initialization
