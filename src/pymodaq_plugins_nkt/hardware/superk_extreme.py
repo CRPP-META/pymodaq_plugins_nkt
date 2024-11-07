@@ -28,7 +28,7 @@ class Extreme:
         register_address = 0x37
         self.laser.ib_set_reg(self.laser_addr, register_address, value, "u16")
 
-    def set_emission(self, state):
+    def set_emission(self, state):  # state = 0 for OFF, state = 3 for ON
         register_address = 0x30
         self.laser.ib_set_reg(self.laser_addr, register_address, state, "u8")
 
