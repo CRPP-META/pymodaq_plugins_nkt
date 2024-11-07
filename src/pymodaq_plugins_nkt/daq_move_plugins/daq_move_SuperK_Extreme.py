@@ -29,8 +29,8 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
 
     is_multiaxes = False
     _axis_names: Union[List[str], Dict[str, int]] = ['power']   # name of the axis
-    _controller_units: Union[str, List[str]] = '%'              # units of the axis
-    _epsilon: Union[float, List[float]] = 0                     # laser has no moving parts → epsilon = 0
+    _controller_units: Union[str, List[str]] = ''              # units of the axis
+    _epsilon: Union[float, List[float]] = 0                    # laser has no moving parts → epsilon = 0
     data_actuator_type = DataActuatorType.DataActuator  # can be DataActuatorType.float for old data style
 
     _laser_port = None
