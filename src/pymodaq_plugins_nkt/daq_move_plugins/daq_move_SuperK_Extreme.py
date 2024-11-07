@@ -101,7 +101,7 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
             False if initialization failed otherwise True
         """
 
-        # self.ini_stage_init(slave_controller=controller)  # will be useful when controller is slave
+        self.ini_stage_init(slave_controller=controller)  # will be useful when controller is slave
 
         if self.is_master:  # is needed when controller is master
             self.controller = Extreme(port=self.settings['com_port'])
