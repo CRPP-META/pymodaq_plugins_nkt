@@ -55,24 +55,11 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         float: The position obtained after scaling conversion.
         """
         ## TODO for your custom plugin
-        raise NotImplemented  # when writing your own plugin remove this line
-        pos = DataActuator(data=self.controller.your_method_to_get_the_actuator_value())  # when writing your own plugin replace this line
-        pos = self.get_position_with_scaling(pos)
-        return pos
-
-    # def user_condition_to_reach_target(self) -> bool:
-    #     """ Implement a condition for exiting the polling mechanism and specifying that the
-    #     target value has been reached
-
-    #    Returns
-    #     -------
-    #     bool: if True, PyMoDAQ considers the target value has been reached
-    #     """
-    #     # TODO either delete this method if the usual polling is fine with you, but if need you can
-    #     #  add here some other condition to be fullfilled either a completely new one or
-    #     #  using or/and operations between the epsilon_bool and some other custom booleans
-    #     #  for a usage example see DAQ_Move_brushlessMotor from the Thorlabs plugin
-    #     return True
+        # raise NotImplemented  # when writing your own plugin remove this line
+        # pos = DataActuator(data=self.controller.your_method_to_get_the_actuator_value())  # when writing your own plugin replace this line
+        # pos = self.get_position_with_scaling(pos)
+        # return pos
+        pass
 
     def close(self):
         """Terminate the communication protocol"""
