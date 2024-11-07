@@ -106,8 +106,8 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         if self.is_master:  # is needed when controller is master
             self.controller = Extreme(port=self.settings['com_port'])
 
-        info = "Whatever info you want to log"
-        initialized = bool(self.controller.system_type())
+        info = "Laser is connected"
+        initialized = True
         return info, initialized
 
     def move_abs(self, value: DataActuator):
