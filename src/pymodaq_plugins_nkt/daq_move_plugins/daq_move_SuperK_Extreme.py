@@ -152,12 +152,10 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         self.emit_status(ThreadCommand('Update_Status', ['Some info you want to log']))
 
     def stop_motion(self):
-      """Stop the actuator and emits move_done signal"""
+      """Stop the laser"""
 
-      ## TODO for your custom plugin
-      raise NotImplemented  # when writing your own plugin remove this line
-      self.controller.your_method_to_stop_positioning()  # when writing your own plugin replace this line
-      self.emit_status(ThreadCommand('Update_Status', ['Some info you want to log']))
+      self.controller.set_emission(0)  # when writing your own plugin replace this line
+      self.emit_status(ThreadCommand('Update_Status', ['Laser is turned OFF']))
 
 
 if __name__ == '__main__':
