@@ -80,7 +80,7 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
             self.controller.open_connection(port=self.settings['com_port'])
 
         elif param.name() == 'power':
-            self.set_power(value=int(self.settings['power']))
+            self.controller.set_power(value=int(10 * self.settings['power']))
             # do this only if you can and if the units are not known beforehand, for instance
             # if the motors connected to the controller are of different type (mm, µm, nm, , etc...)
             # see BrushlessDCMotor from the thorlabs plugin for an exemple
