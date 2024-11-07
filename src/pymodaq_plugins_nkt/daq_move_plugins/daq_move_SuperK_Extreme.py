@@ -41,7 +41,7 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         {'title': 'COM Port:', 'name': 'com_port', 'type': 'list', 'limits': ports},
         {'title': 'Power', 'name': 'power', 'type': 'slide', 'value': 17, 'default': 17, 'min': 17, 
          'max': 100, 'subtype': 'linear','suffix':'%','siPrefix':True}
-    ]
+    ] + comon_parameters_fun(is_multiaxes, axis_names=_axis_names, epsilon=_epsilon)
 
     def ini_attributes(self):
 
