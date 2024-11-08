@@ -147,11 +147,11 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         self.emit_status(ThreadCommand('Update_Status', ['Laser state updated']))
 
     def move_rel(self, value: DataActuator):
-        """ Move the actuator to the relative target actuator value defined by value
+        """ Change relative target laser power value → defined by value
 
         Parameters
         ----------
-        value: (float) value of the relative target positioning
+        value: (float) value of the relative target
         """
         value = self.check_bound(self.current_position + value) - self.current_position
         self.target_value = value + self.current_position
@@ -162,7 +162,7 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         self.controller.your_method_to_set_a_relative_value(value.value())  # when writing your own plugin replace this line
         self.emit_status(ThreadCommand('Update_Status', ['Some info you want to log']))
 
-    def move_home(self):
+    def move_home(self):  # Does not work yet → TODO change .defaultValue
         """Call the reference method of the controller"""
 
         self.controller.set_power(value=int(10 * self.settings['power'].defaultValue))
