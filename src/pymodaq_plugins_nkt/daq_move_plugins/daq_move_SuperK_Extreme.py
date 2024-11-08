@@ -59,7 +59,12 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         # pos = DataActuator(data=self.controller.your_method_to_get_the_actuator_value())  # when writing your own plugin replace this line
         # pos = self.get_position_with_scaling(pos)
         # return pos
-        pass
+        status_bit = self.controller.status()
+
+        if status_bit & 1:
+            return 1
+        else:
+            return 0
 
     def close(self):
         """Terminate the communication protocol"""
