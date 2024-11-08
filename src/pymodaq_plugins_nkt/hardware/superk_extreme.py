@@ -25,3 +25,8 @@ class Extreme:
     def set_emission(self, state):  # state = 0 for OFF, state = 3 for ON
         register_address = 0x30
         self.laser.ib_set_reg(self.laser_addr, register_address, state, "u8")
+
+
+# if __name__ == "__main__":
+#     laser = Extreme('COM5')
+#     # print(laser.system_type())
