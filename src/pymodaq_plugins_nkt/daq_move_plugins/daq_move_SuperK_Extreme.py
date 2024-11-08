@@ -110,7 +110,19 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
 
         if self.is_master:  # is needed when controller is master
             self.controller = Extreme(port=self.settings['com_port'])
+            self.controller.set_emission(0)
+        
+        # Add the rest of status_bits
 
+        if self.controller.status() & (1 << 3):
+            raise ValueError('Door interlock')
+
+        if self.controller.status() & (1 << 2):
+            raise ValueError('Interlock supply voltage low (possible short circuit)')
+
+        if self.controller.status() & (1 << 1):
+            raise ValueError('Reset interlock')
+        
         info = "Laser is connected"
         initialized = True
         return info, initialized
