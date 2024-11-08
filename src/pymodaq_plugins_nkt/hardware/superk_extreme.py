@@ -1,4 +1,3 @@
-import pylablib as pll
 from pylablib.devices import NKT
 
 
