@@ -10,11 +10,6 @@ class Extreme:
 
         self.open_connection(port)
 
-
-    def system_type(self):
-        register_address = 0x60
-        return self.laser.ib_get_reg(self.laser_addr, register_address, "u8")
-
     def open_connection(self, port):
         self.laser = NKT.GenericInterbusDevice(port)
 
