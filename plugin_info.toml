@@ -4,11 +4,11 @@
 SHORT_PLUGIN_NAME = 'nkt'  #to be modified, for instance daqmx then rename the module name:
 # (pymodaq_plugins_template become pymodaq_plugins_daqmx for instance)
 
-package-url = 'https://github.com/CRPP-CNRS-Metamaterials/pymodaq_plugins_nkt' #to modify
+package-url = 'https://github.com/CRPP-META/pymodaq_plugins_nkt' #to modify
 description = 'A PyMoDAQ plugin for NKT Photonics instruments'
 
-author = 'Author Name'
-author-email = 'Author email'
+author = 'Bastien Bégon'
+author-email = 'bastien.begon@crpp.cnrs.fr'
 license = 'MIT'
 
 [plugin-install]
