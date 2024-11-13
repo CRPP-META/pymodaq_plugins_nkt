@@ -48,8 +48,7 @@ Below is the list of instruments included in this plugin
 Actuators
 +++++++++
 
-* **SuperK Extreme**: Supercontinuum white light laser plugin including emission state and power control. 
-Turn on laser by setting the output value to 1 and turn it off with 0.
+* **SuperK Extreme**: Supercontinuum white light laser plugin including emission state and power control. Turn on laser by setting the output value to 1 and turn it off with 0.
 
 
 Installation instructions
