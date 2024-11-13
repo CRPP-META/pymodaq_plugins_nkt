@@ -15,8 +15,8 @@ pymodaq_plugins_nkt
    :target: https://github.com/CRPP-META/pymodaq_plugins_nkt
    :alt: Publication Status
 
-.. image:: https://github.com/CRPP-META/pymodaq_plugins_nkt/actions/workflows/Test.yml/badge.svg
-    :target: https://github.com/CRPP-META/pymodaq_plugins_nkt/actions/workflows/Test.yml
+.. image:: https://github.com/CRPP-META/pymodaq_plugins_nkt/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/CRPP-META/pymodaq_plugins_nkt/actions/workflows/test.yml
 
 
 .. Use this template to create a repository on your account and start the development of your own PyMoDAQ plugin!
