@@ -26,6 +26,14 @@ class Extreme:
         register_address = 0x11
         return self.laser.ib_get_reg(self.laser_addr, register_address, "u8")
     
+    def interlock(self):
+        """
+        The first byte (LSB) indicates if the interlock circuit is open or closed.
+        The second byte (MSB) indicates where the interlock circuit is open, if relevant.
+        """
+        register_address = 0x32
+        return self.laser.ib_get_reg(self.laser_addr, register_address, "u8")
+
     def status(self) -> int:
         """ Returns laser status bit as a 16-bit integer 
         Bit 0: Emission on
