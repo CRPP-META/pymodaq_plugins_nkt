@@ -15,8 +15,8 @@ pymodaq_plugins_nkt
    :target: https://github.com/CRPP-META/pymodaq_plugins_nkt
    :alt: Publication Status
 
-.. image:: https://github.com/CRPP-META/pymodaq_plugins_nkt/actions/workflows/Test.yml/badge.svg
-    :target: https://github.com/CRPP-META/pymodaq_plugins_nkt/actions/workflows/Test.yml
+.. image:: https://github.com/CRPP-META/pymodaq_plugins_nkt/actions/workflows/Testbase.yml/badge.svg
+    :target: https://github.com/CRPP-META/pymodaq_plugins_nkt/actions/workflows/Testbase.yml
 
 
 .. Use this template to create a repository on your account and start the development of your own PyMoDAQ plugin!
@@ -53,7 +53,7 @@ Actuators
 
 Installation instructions
 =========================
-Tested with PyMoDAQ 4.4.6 & Windows 11
+Tested with PyMoDAQ 4.4.6 on Windows 11.
 
 * Installing `Control <https://www.nktphotonics.com/support/>`_ software from NKT Photonics support page should provide all necessary drivers.
 
