@@ -27,19 +27,6 @@ Authors
 
 * Bastien Bégon (bastien.begon@crpp.cnrs.fr)
 
-.. if needed use this field
-
-    Contributors
-    ============
-
-    * First Contributor
-    * Other Contributors
-
-.. if needed use this field
-
-  Depending on the plugin type, delete/complete the fields below
-
-
 Instruments
 ===========
 
@@ -48,7 +35,7 @@ Below is the list of instruments included in this plugin
 Actuators
 +++++++++
 
-* **SuperK Extreme**: Supercontinuum white light laser plugin including emission state and power control. Turn on laser by setting the output value to 1 and turn it off with 0.
+* **SuperK Extreme**: Supercontinuum laser (emission state and output power control)
 
 
 Installation instructions
