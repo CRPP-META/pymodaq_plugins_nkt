@@ -68,8 +68,9 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
 
     def close(self):
         """Terminate the communication protocol"""
-        self.controller.set_emission(0)
-        self.controller.close_connection()  # when writing your own plugin replace this line
+        if self.controller is not None:
+            self.controller.set_emission(0)
+            self.controller.close_connection()
 
     def commit_settings(self, param: Parameter):
         """Apply the consequences of a change of value in the detector settings
