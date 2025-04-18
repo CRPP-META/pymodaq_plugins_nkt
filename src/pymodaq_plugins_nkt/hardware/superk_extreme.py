@@ -9,6 +9,7 @@ class Extreme:
         self.laser_addr = 15  # 15 for Extreme/Fianum lasers
 
         self.open_connection(port)
+        self.interlock = self.interlock_state()
 
     def open_connection(self, port):
         self.laser = NKT.GenericInterbusDevice(port)
@@ -26,7 +27,7 @@ class Extreme:
         register_address = 0x11
         return self.laser.ib_get_reg(self.laser_addr, register_address, "u8")
     
-    def interlock(self):
+    def interlock_state(self):
         """
         The first byte (LSB) indicates if the interlock circuit is open or closed.
         The second byte (MSB) indicates where the interlock circuit is open, if relevant.
@@ -63,4 +64,4 @@ class Extreme:
 
 # if __name__ == "__main__":
 #     laser = Extreme('COM5')
-#     # print(laser.system_type())
+#     print(laser.interlock())
