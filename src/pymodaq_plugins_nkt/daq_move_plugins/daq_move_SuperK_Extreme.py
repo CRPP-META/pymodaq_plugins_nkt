@@ -107,14 +107,11 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
             False if initialization failed otherwise True
         """
 
-        self.ini_stage_init(slave_controller=controller)  # will be useful when controller is slave
+        self.controller = self.ini_stage_init(old_controller=controller, new_controller=Extreme(port=self.settings['com_port']))  # will be useful when controller is slave
 
-        if self.is_master:  # is needed when controller is master
-            self.controller = Extreme(port=self.settings['com_port'])
-            self.controller.set_emission(0)
 
         # Check interlock status
-        inter = self.controller.interlock()
+        inter = self.controller.interlock
 
         if inter[0] == 0:
             if inter[1] == 1:
@@ -136,7 +133,7 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
         elif inter[0] == 2:
             info = "Interlock is OK"
             initialized = True
-            
+
         return info, initialized
 
     def move_abs(self, value: DataActuator):
