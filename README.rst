@@ -40,7 +40,7 @@ Actuators
 
 Installation instructions
 =========================
-Tested with PyMoDAQ 4.4.6 on Windows 11.
+Tested with PyMoDAQ 5.0.18 on Windows 11.
 
-* Installing `Control <https://www.nktphotonics.com/support/>`_ software from NKT Photonics support page should provide all necessary drivers.
+* Installing `Control <https://www.nktphotonics.com/download-center/>`_ software from NKT Photonics support page should provide all necessary drivers.
 

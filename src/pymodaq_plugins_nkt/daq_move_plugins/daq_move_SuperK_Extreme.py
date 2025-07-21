@@ -1,9 +1,9 @@
 from typing import Union, List, Dict
 
-from pymodaq.control_modules.move_utility_classes import DAQ_Move_base, comon_parameters_fun, main, DataActuatorType,\
-    DataActuator  # common set of parameters for all actuators
-from pymodaq.utils.daq_utils import ThreadCommand # object used to send info back to the main thread
-from pymodaq.utils.parameter import Parameter
+from pymodaq.control_modules.move_utility_classes import (DAQ_Move_base, comon_parameters_fun,
+                                                          main, DataActuatorType, DataActuator)
+from pymodaq_utils.utils import ThreadCommand  # object used to send info back to the main thread
+from pymodaq_gui.parameter import Parameter
 
 from pymodaq_plugins_nkt.hardware.superk_extreme import Extreme
 
@@ -24,7 +24,7 @@ class DAQ_Move_SuperK_Extreme(DAQ_Move_base):
     -----------
     controller: object
         The particular object that allow the communication with the hardware, in general a python wrapper around the
-         hardware library.
+        hardware library.
     """
 
     is_multiaxes = False

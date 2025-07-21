@@ -1,8 +1,8 @@
 from qtpy import QtWidgets
 
-from pymodaq.utils import gui_utils as gutils
-from pymodaq.utils.config import Config
-from pymodaq.utils.logger import set_logger, get_module_name
+from pymodaq_gui import utils as gutils
+from pymodaq_utils.config import Config
+from pymodaq_utils.logger import set_logger, get_module_name
 
 # todo: replace here *pymodaq_plugins_template* by your plugin package name
 from pymodaq_plugins_template.utils import Config as PluginConfig
@@ -67,14 +67,14 @@ class CustomAppTemplate(gutils.CustomApp):
         """Connect actions and/or other widgets signal to methods"""
         raise NotImplementedError
 
-    def setup_menu(self):
+    def setup_menu(self, menubar: QtWidgets.QMenuBar = None):
         """Non mandatory method to be subclassed in order to create a menubar
 
         create menu for actions contained into the self._actions, for instance:
 
         Examples
         --------
-        >>>file_menu = self.mainwindow.menuBar().addMenu('File')
+        >>>file_menu = menubar.addMenu('File')
         >>>self.affect_to('load', file_menu)
         >>>self.affect_to('save', file_menu)
 
@@ -106,7 +106,7 @@ class CustomAppTemplate(gutils.CustomApp):
 
 
 def main():
-    from pymodaq.utils.gui_utils.utils import mkQApp
+    from pymodaq_gui.utils.utils import mkQApp
     app = mkQApp('CustomApp')
 
     mainwindow = QtWidgets.QMainWindow()
